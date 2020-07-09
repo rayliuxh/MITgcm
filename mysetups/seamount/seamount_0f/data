@@ -1,0 +1,54 @@
+# Model parameters
+# Continuous equation parameters
+ &PARM01
+ tRef=28.9463,27.3964,24.8769,21.4771,17.3444,13.7597,11.6171,10.6260,10.2245,10.0710,10.0610,10.0510,10.0410,10.0310,10.0210,10.0110,10.0010,
+ sRef=10.,10.,10.,10.,10.,10.,10.,10.,10.,10.,10.,10.,10.,10.,10.,10.,10.,
+ viscAz=1.E-4,
+ viscAh=4.E2,
+ no_slip_sides=.FALSE.,
+ no_slip_bottom=.FALSE.,
+ diffKhT=4.E2,
+ diffKzT=1.E-4,
+ rotationPeriod=86400.,
+ beta=1.E-11,
+ tAlpha=2.E-4,
+ sBeta =0.,
+ gravity=9.81,
+ rigidLid=.FALSE.,
+ implicitFreeSurface=.TRUE.,
+ eosType='LINEAR',
+ readBinaryPrec=64,
+ useSingleCpuIO=.TRUE.,
+ &
+# Elliptic solver parameters
+ &PARM02
+ cg2dMaxIters=1000,
+ cg2dTargetResidual=1.E-13,
+ &
+# Time stepping parameters
+ &PARM03
+ startTime=0.,
+ endTime=31104000., 
+ deltaTmom=10.0,
+ deltaTtracer=10.0,
+ abEps=0.1,
+ pChkptFreq=2592000.0,
+ chkptFreq=0.0,
+ dumpFreq=25920.0,
+ monitorFreq=7200.,
+ &
+# Gridding parameters
+ &PARM04
+ usingSphericalPolarGrid=.TRUE.,
+ ygOrigin=16.,
+ delX=240*0.004,
+ delY=240*0.004,
+ delZ=50.,50.,50.,50.,50.,50.,50.,50.,50.,50.,500.,500.,500.,500.,500.,500.,500.,
+ &
+ &PARM05
+ bathyFile='topog_seam0f_seam.dat',
+ hydrogThetaFile=,
+ hydrogSaltFile=,
+# zonalWindFile='windx.sin_y',
+# meridWindFile=,
+ &
