@@ -1,0 +1,54 @@
+# Model parameters
+# Continuous equation parameters
+ &PARM01
+ tRef=29.7829,29.3044,27.3847,23.1533,18.0251,13.9787,11.6821,10.6448,10.2299,10.0726,
+ sRef=10.,10.,10.,10.,10.,10.,10.,10.,10.,10.,
+ viscAz=1.E-4,
+ viscAh=4.E2,
+ no_slip_sides=.FALSE.,
+ no_slip_bottom=.FALSE.,
+ diffKhT=4.E2,
+ diffKzT=1.E-4,
+ rotationPeriod=86400.,
+ beta=1.E-11,
+ tAlpha=2.E-4,
+ sBeta =0.,
+ gravity=9.81,
+ rigidLid=.FALSE.,
+ implicitFreeSurface=.TRUE.,
+ eosType='LINEAR',
+ readBinaryPrec=64,
+ useSingleCpuIO=.TRUE.,
+ &
+# Elliptic solver parameters
+ &PARM02
+ cg2dMaxIters=1000,
+ cg2dTargetResidual=1.E-13,
+ &
+# Time stepping parameters
+ &PARM03
+ startTime=0.,
+ endTime=31104000., 
+ deltaTmom=100.0,
+ deltaTtracer=100.0,
+ abEps=0.1,
+ pChkptFreq=2592000.0,
+ chkptFreq=0.0,
+ dumpFreq=25920.0,
+ monitorFreq=7200.,
+ &
+# Gridding parameters
+ &PARM04
+ usingSphericalPolarGrid=.TRUE.,
+ ygOrigin=16.,
+ delX=40*0.024,
+ delY=40*0.024,
+ delZ=50.,50.,50.,50.,50.,50.,50.,50.,50.,50,
+ &
+ &PARM05
+ bathyFile='topog_seam0c500m.dat',
+ hydrogThetaFile=,
+ hydrogSaltFile=,
+# zonalWindFile='windx.sin_y',
+# meridWindFile=,
+ &
