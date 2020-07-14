@@ -2,19 +2,29 @@
 ieee='b';
 accuracy='real*8';
 %% topography
-x0 = 1:1:100;
-y0 = 1:1:100;
-[xm0,ym0] = meshgrid(x0,y0);
+%% X = 400km Y = 300km (dx = dy = 4km)
+xx = 1:1:100;
+yy = 1:1:75;
+[xm,ym] = meshgrid(xx,yy);
+x0 = 50; y0 = 37.5;
 
-Ls = 4; %# 20 km with dx=0.4 km
-dist0 = exp(-((xm0-50).^2+(ym0-50).^2)/Ls.^2);
-Ho = 3700*dist0-4000;
-% Ho = xm0*0-4000;
+Ls = 6; % scale of seamount (24 km with dx=4 km)
+
+rsq = (xm-x0).^2+(ym-y0).^2; % r^2
+dist0 = exp(-rsq/Ls.^2);
+H = 4500;
+hm = 0.9*4500;
+Ho = hm*dist0-H;
+
 Ho(:,1) = 0;
 Ho(:,end) = 0;
 
-% % % fid=fopen('topog_seam0c_seam.dat','w',ieee); fwrite(fid,Ho,accuracy); fclose(fid);
 fid=fopen('topog_seam1c_seam_clo2.dat','w',ieee); fwrite(fid,Ho,accuracy); fclose(fid);
+
+H0 = Ho*0-4500;
+H0(:,1) = 0;
+H0(:,end) = 0;
+fid=fopen('topog_seam1c_flat_clo2.dat','w',ieee); fwrite(fid,H0,accuracy); fclose(fid);
 % % Wind-stress
 % tauMax=0.1;
 % x=((1:nx)-0.5)/(nx-1); % nx-1 accounts for a solid wall
@@ -24,12 +34,12 @@ fid=fopen('topog_seam1c_seam_clo2.dat','w',ieee); fwrite(fid,Ho,accuracy); fclos
 % fid=fopen('windx.sin_y','w',ieee); fwrite(fid,tau,accuracy); fclose(fid);
 
 %% bnd condition
-dy = 2400;
-dx = 2400;
-x = x0*dx;
-y = y0*dy;
+dy = 4000;
+dx = 4000;
+x = xx*dx;
+y = yy*dy;
 z = 0:-50:-500;
-z_deep = [z,-1000:-500:-4000];
+z_deep = [z,-1000:-500:-4500];
 
 um1 = 0.1; um2 = 0.1;
 hs = 120;  drho = 2;
@@ -65,7 +75,7 @@ for iy = 1:length(y)
     t3d(iy,:) = 0.5*(t1d(1:end-1)+t1d(2:end))+t_therm(iy,:);
 end
 t3d_lower(:,1) = t3d(:,end)-0.01;
-for iz = 2:7
+for iz = 2:8
     t3d_lower(:,iz) = t3d_lower(:,iz-1)-0.1;
 end
 t3d_deep = cat(2,t3d,t3d_lower);
