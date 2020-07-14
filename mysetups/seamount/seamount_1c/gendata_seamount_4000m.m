@@ -51,7 +51,7 @@ g = 9.81;
 rho0 = 1020;
 
 u1d = um1 + um2*tanh((z+hs)/hd);
-u1d_deep = [u1d,0,0,0,0,0,0,0];
+u1d_deep = [u1d,0,0,0,0,0,0,0,0];
 for iy = 1:length(y)
     u3d(iy,:) = 0.5*(u1d_deep(1:end-1)+u1d_deep(2:end));
 end
