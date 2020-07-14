@@ -5,7 +5,7 @@ accuracy='real*8';
 %% X = 400km Y = 300km (dx = dy = 4km)
 xx = 1:1:100;
 yy = 1:1:75;
-[xm,ym] = meshgrid(xx,yy);
+[ym,xm] = meshgrid(yy,xx);
 x0 = 50; y0 = 37.5;
 
 Ls = 6; % scale of seamount (24 km with dx=4 km)
@@ -98,6 +98,6 @@ end
 % fid=fopen('OB_WestH.bin','w',ieee); fwrite(fid,eta,accuracy); fclose(fid);
  fid=fopen('OBzonalU_velo2.bin','w',ieee); fwrite(fid,u3d,accuracy); fclose(fid);
  fid=fopen('OBzonalT_velo2.bin','w',ieee); fwrite(fid,t3d_deep,accuracy); fclose(fid);
- fid=fopen('OB_northT_velo2.bin','w',ieee); fwrite(fid,tmer_north,accuracy); fclose(fid);
- fid=fopen('OB_southT_velo2.bin','w',ieee); fwrite(fid,tmer_south,accuracy); fclose(fid);
- fid=fopen('OB_meriV_velo2.bin','w',ieee); fwrite(fid,vmer_3d,accuracy); fclose(fid);
+%  fid=fopen('OB_northT_velo2.bin','w',ieee); fwrite(fid,tmer_north,accuracy); fclose(fid);
+%  fid=fopen('OB_southT_velo2.bin','w',ieee); fwrite(fid,tmer_south,accuracy); fclose(fid);
+%  fid=fopen('OB_meriV_velo2.bin','w',ieee); fwrite(fid,vmer_3d,accuracy); fclose(fid);
