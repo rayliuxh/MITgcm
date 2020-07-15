@@ -75,6 +75,7 @@ for iy = 1:length(y)
     t3d(iy,:) = 0.5*(t1d(1:end-1)+t1d(2:end))+t_therm(iy,:);
 end
 t3d_lower(:,1) = t3d(:,end)-0.01;
+t3d_lower(:,1) = t3d_lower(end,1);
 for iz = 2:8
     t3d_lower(:,iz) = t3d_lower(:,iz-1)-0.1;
 end
