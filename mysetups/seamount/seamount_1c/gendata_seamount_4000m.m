@@ -56,6 +56,8 @@ for iy = 1:length(y)
     u3d(iy,:) = 0.5*(u1d_deep(1:end-1)+u1d_deep(2:end));
 end
 
+u3d = u3d*0+0.25;
+
 rho1d = rho0 - drho*tanh((z+hc)/ht);
 dudz = (u1d(1:end-1)-u1d(2:end))/50;
 for iy = 1:length(y)
@@ -97,8 +99,8 @@ end
 % eta = eta';
 %%
 % fid=fopen('OB_WestH.bin','w',ieee); fwrite(fid,eta,accuracy); fclose(fid);
- fid=fopen('OBzonalU_velo2.bin','w',ieee); fwrite(fid,u3d,accuracy); fclose(fid);
- fid=fopen('OBzonalT_velo2.bin','w',ieee); fwrite(fid,t3d_deep,accuracy); fclose(fid);
+ fid=fopen('OBzonalU_velo3.bin','w',ieee); fwrite(fid,u3d,accuracy); fclose(fid);
+ fid=fopen('OBzonalT_velo3.bin','w',ieee); fwrite(fid,t3d_deep,accuracy); fclose(fid);
 %  fid=fopen('OB_northT_velo2.bin','w',ieee); fwrite(fid,tmer_north,accuracy); fclose(fid);
 %  fid=fopen('OB_southT_velo2.bin','w',ieee); fwrite(fid,tmer_south,accuracy); fclose(fid);
 %  fid=fopen('OB_meriV_velo2.bin','w',ieee); fwrite(fid,vmer_3d,accuracy); fclose(fid);
