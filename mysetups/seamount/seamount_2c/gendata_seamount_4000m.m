@@ -21,10 +21,10 @@ Ho(:,end) = 0;
 
 fid=fopen('topog_seam2c_seam_clo2.dat','w',ieee); fwrite(fid,Ho,accuracy); fclose(fid);
 
-% H0 = Ho*0-4500;
-% H0(:,1) = 0;
-% H0(:,end) = 0;
-% fid=fopen('topog_seam1c_flat_clo2.dat','w',ieee); fwrite(fid,H0,accuracy); fclose(fid);
+H0 = Ho*0-4000;
+H0(:,1) = 0;
+H0(:,end) = 0;
+fid=fopen('topog_seam2c_flat_clo2.dat','w',ieee); fwrite(fid,H0,accuracy); fclose(fid);
 
 %% bnd condition
 dy = 4000;
@@ -32,7 +32,7 @@ dx = 4000;
 x = xx*dx;
 y = yy*dy;
 z = 0:-50:-1000;
-z_deep = [z,-1000:-500:-4000];
+z_deep = [z,-1500:-500:-4000];
 
 um1 = 0.1; um2 = 0.1;
 hs = 500;  drho = 2;
